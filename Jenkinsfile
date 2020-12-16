@@ -2,13 +2,7 @@ node {
 
    stage('Clone Repository') {
         // Get some code from a GitHub repository
-        git {
-            remote {
-               url 'https://github.com/amphonr/demo.git'
-            }
-            branch 'master'
-        }
-
+        git 'https://github.com/amphonr/demo.git'
    }
 
    stage('Build Maven Image') {
