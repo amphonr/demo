@@ -14,8 +14,7 @@ node {
    }
 
    stage ('Deploy to Dev') {
-        def dockerRun = 'docker run -d -p 8091:8090 demo:1.0.0'
-        sh '${dockerRun}'
+        sh 'docker run -d -p 8091:8090 demo:1.0.0'
    }
 
 }
