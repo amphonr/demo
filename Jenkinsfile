@@ -7,11 +7,7 @@ node {
 
    stage('Build Maven Image') {
          steps {
-            script {
-                withMaven(maven: 'M3'){
-                    bat "mvn clean package"
-                }
-            }
+            sh 'mvn clean install'
          }
    }
 }
