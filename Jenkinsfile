@@ -6,7 +6,7 @@ node {
             remote {
                url 'https://github.com/amphonr/demo.git'
             }
-            branch 'main'
+            branch 'master'
         }
 
    }
