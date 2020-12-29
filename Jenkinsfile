@@ -10,7 +10,7 @@ node {
 
    stage ('Docker image build') {
         script{
-            app = docker.build(demo)
+            app = docker.build("demo")
         }
    }
 
