@@ -17,7 +17,7 @@ pipeline {
                     dockerImage = docker.build("modongsotay/my-app")
                 }
             }
-//         }
+        }
 //         stage('Push image') {
 //             steps {
 //                 script {
