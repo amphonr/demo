@@ -9,9 +9,7 @@ node {
    }
 
    stage ('Docker image build') {
-        script{
-            app = docker.build("demo")
-        }
+        sh 'docker build -t demo:1.0.0 .'
    }
 
    stage ('Deploy to Dev') {
