@@ -1,19 +1,38 @@
-node {
+pipeline {
+    agent any
 
-   stage('Clone Repository') {
-        git 'https://github.com/amphonr/demo.git'
-   }
+    environment {
+        dockerImage = ''
+    }
 
-   stage('Build Maven Image') {
-        sh 'mvn clean install package'
-   }
-
-   stage ('Docker image build') {
-        sh 'docker build -t demo:1.0.0 .'
-   }
-
-   stage ('Deploy to Dev') {
-        sh 'docker run -d -p 8091:8090 demo:1.0.0'
-   }
-
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('Build image') {
+            steps {
+                script {
+                    dockerImage = docker.build("modongsotay/my-app")
+                }
+            }
+        }
+        stage('Push image') {
+            steps {
+                script {
+                    withDockerRegistry(
+                        credentialsId: 'docker-credential',
+                        url: 'https://index.docker.io/v1/') {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage('Deployment') {
+            steps {
+                sh 'kubectl apply -f deployment.yml';
+            }
+        }
+    }
 }

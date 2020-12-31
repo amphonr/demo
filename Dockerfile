@@ -1,4 +1,6 @@
 FROM openjdk:8-jre-alpine
+VOLUME /tmp
+EXPOSE 8080
 ARG JAR_FILE=target/demo.jar
 # cd /opt/app
 WORKDIR /opt/app
