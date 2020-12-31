@@ -18,21 +18,21 @@ pipeline {
                 }
             }
         }
-//         stage('Push image') {
-//             steps {
-//                 script {
-//                     withDockerRegistry(
-//                         credentialsId: 'docker-credential',
-//                         url: 'https://index.docker.io/v1/') {
-//                         dockerImage.push()
-//                     }
-//                 }
-//             }
-//         }
-//         stage('Deployment') {
-//             steps {
-//                 sh 'kubectl apply -f deployment.yml';
-//             }
-//         }
+        stage('Push image') {
+            steps {
+                script {
+                    withDockerRegistry(
+                        credentialsId: 'docker-credential',
+                        url: 'https://index.docker.io/v1/') {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage('Deployment') {
+            steps {
+                sh 'kubectl apply -f deployment.yml';
+            }
+        }
     }
 }
