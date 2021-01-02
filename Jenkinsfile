@@ -14,7 +14,7 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    dockerImage = docker.build("modongsotay/my-app")
+                    dockerImage = docker.build("modongsotay/config-server-client")
                 }
             }
         }

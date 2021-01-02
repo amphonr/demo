@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: config-client-service
 spec:
   type: NodePort
   selector:
@@ -14,21 +14,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app-deployment
+  name: config-client-deployment
   labels:
-    app: my-app
+    app: config-client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-app
+      app: config-client
   template:
     metadata:
       labels:
-        app: my-app
+        app: config-client
     spec:
       containers:
         - name: nginx
-          image: modongsotay/my-app
+          image: modongsotay/config-client
           ports:
             - containerPort: 80

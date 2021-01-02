@@ -1,7 +1,7 @@
 FROM openjdk:8-jre-alpine
 VOLUME /tmp
 EXPOSE 8080
-ARG JAR_FILE=target/demo.jar
+ARG JAR_FILE=target/*.jar
 # cd /opt/app
 #WORKDIR /opt/app
 
